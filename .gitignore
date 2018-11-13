@@ -16,6 +16,7 @@ package-lock.json
 */node_modules
 *.o
 *.pyc
+*.swp
 */step0_repl
 */step1_read_print
 */step2_eval

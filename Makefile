@@ -55,7 +55,7 @@ haxe_MODE = neko
 # octave or matlab
 matlab_MODE = octave
 # python, python2 or python3
-python_MODE = python
+python_MODE = python3
 # scheme (chibi, kawa, gauche, chicken, sagittarius, cyclone, foment)
 scheme_MODE = chibi
 
@@ -82,7 +82,7 @@ IMPLS = ada awk bash basic c chuck clojure coffee common-lisp cpp crystal cs d d
 	elisp elixir elm erlang es6 factor fantom forth fsharp go groovy gnu-smalltalk \
 	guile haskell haxe hy io java js julia kotlin livescript logo lua make mal \
 	matlab miniMAL nasm nim objc objpascal ocaml perl perl6 php picolisp plpgsql \
-	plsql powershell ps python r racket rexx rpython ruby rust scala scheme skew \
+	plsql powershell ps python python3 r racket rexx rpython ruby rust scala scheme skew \
 	swift swift3 tcl ts vb vhdl vimscript yorick
 
 EXTENSION = .mal
@@ -225,6 +225,7 @@ plsql_STEP_TO_PROG =   plsql/$($(1)).sql
 powershell_STEP_TO_PROG =  powershell/$($(1)).ps1
 ps_STEP_TO_PROG =      ps/$($(1)).ps
 python_STEP_TO_PROG =  python/$($(1)).py
+python3_STEP_TO_PROG =  python/$($(1)).py
 r_STEP_TO_PROG =       r/$($(1)).r
 racket_STEP_TO_PROG =  racket/$($(1)).rkt
 rexx_STEP_TO_PROG =    rexx/$($(1)).rexxpp
