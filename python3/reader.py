@@ -1,3 +1,4 @@
+import re
 class Reader():
     token = []
     def __init__(self, _token):
@@ -14,14 +15,11 @@ class Reader():
 # call tokenizer, and create new Reader obj with the token.
 # call read_form with the instance.
 def read_str(s):
-    token = tokenizer(s)
-    r = Reader(token);
-    return read_form(r);
+    return read_form(Reader(tokenizer(s)))
 
 def tokenizer(s):
-    """ return a list of all the tokens.
-    """
-    return []
+    pattern = """[\s,]*(~@|[\[\]{}()'`~^@]|"(?:[\\].|[^\\"])*"?|;.*|[^\s\[\]{}()'"`@,;]+)"""
+    return [t for t in re.findall(pattern, s) if t[0] != ";"]
 
 def read_form(r):
     pass

@@ -15,22 +15,24 @@ class TestReader(unittest.TestCase):
         self.assertEqual(len(r.token), 0)
     
     def test_read_str(self):
-        self.fail()
+        pass
     
     def test_tokenizer(self):
-        assert(tokenizer("(+ 1 1)") == ["(", "+", 1, 1, ")"])
-        assert(tokenizer("(+ 1 10)") == ["(", "+", 1, 10, ")"])
-        assert(tokenizer("(+ 1 (- 0 0))")
-            == ["(", "+", 1,"(", "-", 0, 0, ")", ")"])
+        self.assertEqual(tokenizer("(+ 1 1)"), ["(", "+", "1", "1", ")"])
+        self.assertEqual(tokenizer("(+ 1 (- 10 0))"),
+                ["(", "+", "1","(", "-", "10", "0", ")", ")"])
+        self.assertEqual(tokenizer(";(+ 1 1)"), [])
+        self.assertEqual(tokenizer("~@"), ["~@"])
+        self.assertEqual(tokenizer("[]{}'`~^@"), ["[","]","{","}","'","`","~","^","@"])
     
     def test_read_form(self):
-        self.fail()
+        pass
     
     def test_read_list(self):
-        self.fail()
+        pass
 
     def test_read_atom(self):
-        self.fail()
+        pass
 
 if __name__ == "__main__":
     unittest.main()
