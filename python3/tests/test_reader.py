@@ -15,7 +15,9 @@ class TestReader(unittest.TestCase):
         self.assertEqual(len(r.token), 0)
     
     def test_read_str(self):
-        pass
+        self.assertEqual(read_str("()"), [])
+        self.assertEqual(read_str("(+ 1 1)"), ["+",1,1])
+        self.assertEqual(read_str("(+ 1 (* 0 0))"), ["+",1,["*",0,0]])
     
     def test_tokenizer(self):
         self.assertEqual(tokenizer("(+ 1 1)"), ["(", "+", "1", "1", ")"])
