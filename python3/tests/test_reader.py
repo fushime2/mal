@@ -26,7 +26,9 @@ class TestReader(unittest.TestCase):
         self.assertEqual(tokenizer("[]{}'`~^@"), ["[","]","{","}","'","`","~","^","@"])
     
     def test_read_form(self):
-        pass
+        self.assertEqual(read_form(Reader(tokenizer("()"))), [])
+        self.assertEqual(read_form(Reader(tokenizer("(+ 1 1)"))), ["+",1,1])
+        self.assertEqual(read_form(Reader(tokenizer("(+ 1 (* 0 0))"))), ["+",1,["*",0,0]])
     
     def test_read_list(self):
         # (+ 1 1)
