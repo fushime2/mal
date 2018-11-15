@@ -30,7 +30,13 @@ def read_form(r):
         return read_atom(r)
 
 def read_list(r):
-    pass
+    ast = []
+    r.next() # => (
+    while r.peek() != ")":
+        ast.append(read_form(r))
+
+    assert(r.peek() == ")")
+    return ast
 
 def read_atom(r):
     t = r.next()

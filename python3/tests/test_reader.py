@@ -29,7 +29,13 @@ class TestReader(unittest.TestCase):
         pass
     
     def test_read_list(self):
-        pass
+        # (+ 1 1)
+        r = Reader(["(", "+", "1", "1", ")"])
+        self.assertEqual(read_list(r), ["+", 1, 1])
+        
+        # (+ 1 (* 0 0))
+        r = Reader(["(", "+", "1", "(", "*", "0", "0", ")", ")"])
+        self.assertEqual(read_list(r), ["+", 1, ["*", 0, 0]])
 
     def test_read_atom(self):
         # just a number
@@ -40,6 +46,7 @@ class TestReader(unittest.TestCase):
         r = Reader(["+", "0", "1"])
         t = read_atom(r)
         self.assertEqual(t, "+")
+
 
 if __name__ == "__main__":
     unittest.main()
