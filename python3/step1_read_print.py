@@ -1,16 +1,17 @@
 import reader
+import printer
 
 
 def READ(s):
-    return read_str(s)
+    return reader.read_str(s)
 
 
-def EVAL(s):
-    return s
+def EVAL(ast):
+    return ast
 
 
-def PRINT(s):
-    return s
+def PRINT(expr):
+    return printer.pr_str(expr)
 
 
 def rep(s):
