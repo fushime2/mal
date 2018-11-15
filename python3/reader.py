@@ -44,6 +44,7 @@ def read_list(r):
         ast.append(read_form(r))
 
     assert(r.peek() == ")")
+    r.next()
     return ast
 
 
@@ -51,5 +52,5 @@ def read_atom(r):
     t = r.next()
     if t.isdigit():  # number
         return int(t)
-    elif t in ["+", "-", "*", "/"]:  # symbol
+    else:
         return t
