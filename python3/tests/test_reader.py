@@ -32,7 +32,14 @@ class TestReader(unittest.TestCase):
         pass
 
     def test_read_atom(self):
-        pass
+        # just a number
+        r = Reader(["0"])
+        t = read_atom(r)
+        self.assertEqual(t, 0)
+
+        r = Reader(["+", "0", "1"])
+        t = read_atom(r)
+        self.assertEqual(t, "+")
 
 if __name__ == "__main__":
     unittest.main()
