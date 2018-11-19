@@ -24,7 +24,10 @@ def main():
             line = input("user> ")
         except EOFError:
             break
-        print(rep(line))
+        try:
+            print(rep(line))
+        except BaseException:
+            continue
 
 
 if __name__ == "__main__":
