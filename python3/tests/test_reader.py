@@ -17,7 +17,10 @@ class TestReader(unittest.TestCase):
 
     def test_read_str(self):
         self.assertEqual(read_str("()"), [])
+        self.assertEqual(read_str("1"), 1)
+        self.assertEqual(read_str("-1"), -1)
         self.assertEqual(read_str("(+ 1 1)"), ["+", 1, 1])
+        self.assertEqual(read_str("(+ -1 1)"), ["+", -1, 1])
         self.assertEqual(read_str("(+ 1 (* 0 0))"), ["+", 1, ["*", 0, 0]])
 
     def test_tokenizer(self):

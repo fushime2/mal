@@ -15,9 +15,6 @@ class Reader():
         assert(len(self.token) > 0)
         return self.token[0]
 
-# call tokenizer, and create new Reader obj with the token.
-# call read_form with the instance.
-
 
 def read_str(s):
     return read_form(Reader(tokenizer(s)))
