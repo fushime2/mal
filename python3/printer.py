@@ -1,7 +1,10 @@
+from mal_types import *
+
+
 def pr_list(ls):
     s = "("
     for i, elem in enumerate(ls):
-        if isinstance(elem, list):
+        if is_list(elem):
             s += pr_list(elem)
         else:
             s += pr_str(elem)
@@ -12,7 +15,7 @@ def pr_list(ls):
 
 
 def pr_str(ast):
-    if isinstance(ast, list):
+    if is_list(ast):
         return pr_list(ast)
     else:
         return str(ast)

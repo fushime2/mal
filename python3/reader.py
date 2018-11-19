@@ -1,4 +1,5 @@
 import re
+from mal_types import *
 
 
 class Reader():
@@ -47,7 +48,10 @@ def read_list(r):
 
 def read_atom(r):
     t = r.next()
-    if t.isdigit():  # number
-        return int(t)
+    if is_number(t):
+        if is_int(t):
+            return int(t)
+        elif is_float(t):
+            return float(t)
     else:
         return t

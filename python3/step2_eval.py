@@ -1,5 +1,6 @@
 import reader
 import printer
+from mal_types import *
 
 repl_env = {
     "+": lambda a, b: a + b,
@@ -11,14 +12,6 @@ repl_env = {
 
 def READ(s):
     return reader.read_str(s)
-
-
-def is_list(ast):
-    return isinstance(ast, list)
-
-
-def is_symbol(ast):
-    return ast in ["+", "-", "*", "/"]
 
 
 def eval_ast(ast, env):
