@@ -1,8 +1,8 @@
 import unittest
-from step2_eval import *
+from step3_env import *
 
 
-class TestStep2(unittest.TestCase):
+class TestStep3(unittest.TestCase):
     def test_EVAL(self):
         self.assertEqual(EVAL(1), 1)
         self.assertEqual(EVAL(["+", 1, 1]), 2)
@@ -17,6 +17,13 @@ class TestStep2(unittest.TestCase):
 
     def test_eval_ast(self):
         pass
+
+    def test_rep(self):
+        self.assertEqual(rep("(+ 1 1)"), "2")
+        self.assertEqual(rep("(def! a 114514)"), "114514")
+        self.assertEqual(rep("a"), "114514")
+        self.assertEqual(rep("(def! b (+ 100 200))"), "300")
+        self.assertEqual(rep("b"), "300")
 
 
 if __name__ == "__main__":

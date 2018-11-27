@@ -10,6 +10,7 @@ class Env():
 
     def set(self, k, v):
         self.data[k] = v
+        return v
 
     def find(self, k):
         if k in self.data:
@@ -21,7 +22,7 @@ class Env():
 
     def get(self, k):
         env = self.find(k)
-        if not env:
+        if env is None:
             raise Exception(key + "not found")
         else:
             return env.data[k]

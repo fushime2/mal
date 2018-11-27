@@ -9,6 +9,9 @@ class TestEnv(unittest.TestCase):
         env.set("+", lambda a, b: a + b)
         self.assertIsNot(env.find("+"), None)
 
+        self.assertEqual(env.set("a", 114514), 114514)
+        self.assertEqual(env.get("a"), 114514)
+
     def test_find(self):
         pass
 

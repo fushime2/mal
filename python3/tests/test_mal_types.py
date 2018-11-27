@@ -9,9 +9,13 @@ class TestTypes(unittest.TestCase):
         self.assertFalse(is_list(1))
 
     def test_is_symbol(self):
-        self.assertTrue(is_symbol("+"))
-        self.assertTrue(is_symbol("-"))
-        self.assertFalse(is_symbol("//"))
+        from env import Env
+        repl_env = Env()
+        repl_env.set("+", lambda a, b: a + b)
+        repl_env.set("-", lambda a, b: a - b)
+        self.assertTrue(is_symbol("+", repl_env))
+        self.assertTrue(is_symbol("-", repl_env))
+        self.assertFalse(is_symbol("//", repl_env))
 
     def test_is_number(self):
         self.assertTrue(is_number("0"))

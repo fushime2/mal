@@ -15,13 +15,13 @@ def READ(s):
 
 
 def eval_ast(ast, env):
-    if is_symbol(ast):
+    if is_list(ast):
+        return list(map(lambda a: EVAL(a, env), ast))
+    elif is_symbol(ast, env):
         try:
             return env.get(ast)
         except BaseException:
             raise Exception("error: symbol is not found.")
-    elif is_list(ast):
-        return list(map(lambda a: EVAL(a, env), ast))
     else:
         return ast
 
@@ -32,9 +32,10 @@ def EVAL(ast, env=repl_env):
     elif len(ast) == 0:
         return ast
     else:
-        if ast[0] == "def!":
-            pass
-        elif ast[0] == "let*":
+        a0, a1, a2 = ast[0], ast[1], ast[2]
+        if a0 == "def!":
+            return env.set(a1, EVAL(a2, env))
+        elif a0 == "let*":
             pass
         else:
             elist = eval_ast(ast, env)
@@ -55,11 +56,10 @@ def main():
             line = input("user> ")
         except EOFError:
             break
-
         try:
             print(rep(line))
-        except BaseException:
-            continue
+        except BaseException as err:
+            print(err)
 
 
 if __name__ == "__main__":
