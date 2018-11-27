@@ -1,14 +1,13 @@
 import reader
 import printer
-import env
+from env import Env
 from mal_types import *
 
-repl_env = {
-    "+": lambda a, b: a + b,
-    "-": lambda a, b: a - b,
-    "*": lambda a, b: a * b,
-    "/": lambda a, b: a // b
-}
+repl_env = Env()
+repl_env.set("+", lambda a, b: a + b)
+repl_env.set("-", lambda a, b: a - b)
+repl_env.set("*", lambda a, b: a * b)
+repl_env.set("/", lambda a, b: a // b)
 
 
 def READ(s):
@@ -18,7 +17,7 @@ def READ(s):
 def eval_ast(ast, env):
     if is_symbol(ast):
         try:
-            return env[ast]
+            return env.get(ast)
         except BaseException:
             raise Exception("error: symbol is not found.")
     elif is_list(ast):
@@ -33,8 +32,13 @@ def EVAL(ast, env=repl_env):
     elif len(ast) == 0:
         return ast
     else:
-        elist = eval_ast(ast, env)
-        return elist[0](elist[1], elist[2])
+        if ast[0] == "def!":
+            pass
+        elif ast[0] == "let*":
+            pass
+        else:
+            elist = eval_ast(ast, env)
+            return elist[0](elist[1], elist[2])
 
 
 def PRINT(expr):
