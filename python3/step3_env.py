@@ -1,5 +1,6 @@
 import reader
 import printer
+import env
 from mal_types import *
 
 repl_env = {
