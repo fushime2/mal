@@ -23,6 +23,6 @@ class Env():
     def get(self, k):
         env = self.find(k)
         if env is None:
-            raise Exception(key + "not found")
+            raise Exception(k + "not found")
         else:
             return env.data[k]
