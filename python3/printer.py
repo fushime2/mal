@@ -17,5 +17,11 @@ def pr_list(ls):
 def pr_str(ast):
     if is_list(ast):
         return pr_list(ast)
-    else:
+    elif ast is True:
+        return "true"
+    elif ast is False:
+        return "false"
+    elif ast is None:
+        return "nil"
+    else:  # synbol
         return str(ast)

@@ -24,3 +24,11 @@ def is_float(s):
 
 def is_number(s):
     return is_float(s) or is_int(s)
+
+
+def is_boolean(s):
+    return s in ["true", "false"]
+
+
+def is_nil(s):
+    return s == "nil"

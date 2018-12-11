@@ -29,7 +29,5 @@ class TestStep3(unittest.TestCase):
         self.assertEqual(rep("(let* (c 1) c)"), "1")
 
 
-
-
 if __name__ == "__main__":
     unittest.main()

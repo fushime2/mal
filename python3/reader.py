@@ -53,5 +53,9 @@ def read_atom(r):
             return int(t)
         elif is_float(t):
             return float(t)
-    else:
+    elif is_boolean(t):
+        return True if t == "true" else False
+    elif is_nil(t):
+        return None
+    else:  # symbol
         return t
