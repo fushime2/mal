@@ -25,6 +25,11 @@ class TestStep3(unittest.TestCase):
         self.assertEqual(rep("(def! b (+ 100 200))"), "300")
         self.assertEqual(rep("b"), "300")
 
+        # let*
+        self.assertEqual(rep("(let* (c 1) c)"), "1")
+
+
+
 
 if __name__ == "__main__":
     unittest.main()

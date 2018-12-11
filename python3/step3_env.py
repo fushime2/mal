@@ -36,7 +36,10 @@ def EVAL(ast, env=repl_env):
         if a0 == "def!":
             return env.set(a1, EVAL(a2, env))
         elif a0 == "let*":
-            pass
+            let_env = Env(env)
+            for i in range(0, len(a1), 2):
+                let_env.set(a1[i], EVAL(a1[i + 1], let_env))
+            return EVAL(a2, let_env)
         else:
             elist = eval_ast(ast, env)
             return elist[0](elist[1], elist[2])
